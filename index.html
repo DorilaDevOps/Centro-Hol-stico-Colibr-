@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Centro Holístico Colibrí - Terapia holística, Tameana, Flores de Bach, Reiki. Verónica Sosa te guía hacia la sanación emocional y el crecimiento personal.">
+    <meta name="keywords" content="terapia holística, reiki, flores de bach, tameana, sanación energética, crecimiento personal, bienestar, Verónica Sosa">
+    <meta name="author" content="Verónica Sosa - Centro Holístico Colibrí">
+	<link rel="shortcut icon" href="imgs/logo.png" type="image/png">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Centro Holístico Colibrí - Sanación y Transformación">
+    <meta property="og:description" content="Terapia holística para reconectar con tu poder interior y manifestar abundancia desde el alma">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/7c3aed/ffffff?text=Colibri+Holistico">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Centro Holístico Colibrí">
+    <meta name="twitter:description" content="Terapia holística para reconectar con tu poder interior">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/7c3aed/ffffff?text=Colibri+Holistico">
+    
+    <title>Centro Holístico Colibrí | Terapia y Sanación</title>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+
+    
+    <style>
+        /* ========== CSS VARIABLES ========== */
+        :root {
+            /* Light Theme Colors */
+            --bg-primary: #faf9f7;
+            --bg-secondary: #f3f1ed;
+            --bg-accent: #e8e4dd;
+            --text-primary: #2d2a26;
+            --text-secondary: #5a5550;
+            --text-muted: #8a857f;
+            --accent-purple: #7c3aed;
+            --accent-greenYellow: #c3e6ba;
+            --accent-prple-light:#b888e9;
+            --accent-turquoise: #14b8a6;
+            --accent-gold: #d4af37;
+            --accent-sage: #87a878;
+            --border-color: #d4cfc7;
+            --shadow: rgba(45, 42, 38, 0.08);
+            --overlay: rgba(45, 42, 38, 0.6);
+			--overlay_menu:#a1a2d3;
+			--text_brawn:(#ebc39b);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme Colors */
+            --bg-primary: #1a1816;
+            --bg-secondary: #252220;
+            --bg-accent: #2f2c29;
+            --text-primary: #f3f1ed;
+            --text-secondary: #c4c0b8;
+            --text-muted: #8a857f;
+            --accent-purple: #9d6cff;
+			--accent-greenYellow: #565c54;
+            --accent-prple-light:#2a282c;
+            --accent-turquoise: #20d4bd;
+            --accent-gold: #e6c558;
+            --accent-sage: #a0c790;
+            --border-color: #3d3935;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --overlay: rgba(0, 0, 0, 0.7);
+			--overlay_menu:#3b3c5a;
+			--text_brawn:(#5a5550);
+        }
+
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 1.1em;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+			position:relative;
+        }
+
+		h1{font-size: clamp(2.2em, 8vw, 5em);}
+		h2{font-size: clamp(1.2em, 5vw, 2.0em); color: var(--accent-purple);}
+		h3{font-size: clamp(1.0em, 4vw, 1.7em); color: var(--accent-purple); padding-bottom: 1rem;}
+		
+		.hero-content h2{font-size: clamp(1.2em, 8vw, 2.6em); color: var(--accent-purple);}
+		
+		p{ font-size: clamp(.8em, 3vw, 1.2em);}
+		
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========== LAZY LOADING ========== */
+        .lazy-bg {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-accent));
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .lazy-bg.loaded {
+            opacity: 1;
+        }
+
+        img[data-src] {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        /* ========== HEADER ========== */
+       
+        header {
+			display:flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 1rem;
+            position: fixed;
+			width:100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 4px 20px var(--shadow);
+			background-color:#b5d2f396;
+			filter:blur(10);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 10;
+            transition: all 0.4s ease-in-out;
+        }
+        header.scrolled {
+			transform:translateY(-100%);
+        }
+
+        .header-container {
+            display: flex;
+			justify-content: space-between;
+            align-items: center;			
+			gap: 1rem;
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            width: 60px;
+            height: 32px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+        }
+
+        .theme-toggle::before {
+            content: '☀️';
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        [data-theme="dark"] .theme-toggle::before {
+            content: '🌙';
+            left: calc(100% - 28px);
+            background: var(--accent-purple);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            width: 30px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 15;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Navigation Menu */
+        nav {
+    display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            /*max-width: 400px;*/
+            height: 100vh;
+			justify-content: center;
+            background: var(--overlay_menu);
+            box-shadow: -4px 0 20px var(--shadow);
+            padding: 5rem 2rem 2rem;
+            transition: right 0.4s ease;
+            z-index: 10;
+            transition: clip-path .8s ease-in-out;
+			clip-path:circle(0 at center);
+        }
+
+        nav.active {
+            right: 0;
+			clip-path:circle(100% at center);
+        }
+
+        nav ul {
+            list-style: none;
+			text-align: right;
+        }
+
+        nav ul li {
+            margin: 2rem 0;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+
+        nav.active ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        nav.active ul li:nth-child(1) { transition-delay: 0.1s; }
+        nav.active ul li:nth-child(2) { transition-delay: 0.3s; }
+        nav.active ul li:nth-child(3) { transition-delay: 0.5s; }
+        nav.active ul li:nth-child(4) { transition-delay: 0.7s; }
+        nav.active ul li:nth-child(5) { transition-delay: 0.9s; }
+
+        nav a {
+            color: var(--text_brawn);            
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: transform 0.3s ease-in-out;
+            display: inline-block;
+        }
+		
+		nav a::after{
+			content:'';
+			display:block;
+			background:var(--accent-purple);
+			width:0;
+			margin-top:3px;
+			height:3px;
+			transition:all ease-in-out .4s;
+		}
+
+        nav a:hover {
+            transform: scale(1.2);
+        }
+		nav a:hover::after {
+            color: var(--accent-purple);
+			width:90%;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, var(--accent-purple)10, transparent 50%),
+                        radial-gradient(circle at 80% 80%, var(--accent-turquoise)10, transparent 50%);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero h1 {            
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-turquoise));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+			transition: all .4s ease;
+            animation: fadeInUp 1s ease;
+        }
+		
+		.hero h2{
+			font-family: 'Cormorant Garamond', serif;			
+			transition: all 1.4s ease;
+            animation: scaleInUp 1s ease-in-out;
+		}
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+		
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-turquoise));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+			transform: scale(.6);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        } 
+		@keyframes scaleInUp {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0) ; }
+            50% { transform: translateX(-50%) translateY(10px) scale(1.2); }
+        }
+		
+		.about-image{max-width:300px;}
+		.about-image-container{display: flex;justify-content: center;}
+		
+		/******************* HIERBAS CONTAINER   *****************************/
+		.hierbas_container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, var(--accent-greenYellow), var(--accent-prple-light));
+            padding: 20px;
+            max-width: 1600px;
+			margin-top: 1rem;
+        }
+		.cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            font-size: 1em;
+            text-align: center;
+            margin-bottom: .5rem;
+        }
+
+        .card-title {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .card-content {
+            color: #555;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .card-content p {
+            margin-bottom: 12px;
+			font-size: clamp(.8em, 3vw, 1em);
+        }
+
+        .therapy-tags {
+            display: flex;
+            flex-wrap: wrap;
+			justify-content: space-around;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            font-weight: bold;
+			font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+                align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(255,255,255,0.3);
+        }
+
+        .modal-title {
+            color: white;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+			z-index:2;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #667eea;
+			scale:1.3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+
+        /* ========== MAIN CONTENT ========== */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding:1rem .7rem;
+			font-style: italic;
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80%;
+            height:3px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-turquoise));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about_text {
+            color: var(--text-secondary);           
+            line-height: 1.9;
+            margin-bottom: 1.3rem;
+        }
+
+        .about_text_content p {
+            margin-bottom: 1.3rem;
+        }
+
+        .about_text strong, .about_text_content strong {
+			font-weight: 600;
+        }
+		.about-phrase{
+			font-style: italic;
+		}
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-turquoise));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card h3 {
+            color: var(--accent-purple);
+            font-size: 1.3rem;
+            margin-bottom: .9rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ========== TESTIMONIALS ASIDE ========== */
+        aside {
+            background: var(--bg-secondary);
+            padding: 4rem 1.5rem;
+            border-bottom: 1px dotted var(--border-color);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: .7rem;
+        }
+
+        .testimonial {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: 15px;
+            border-left: 2px solid var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateX(10px) scale(1.1);
+        }
+
+        .testimonial .stars {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: .7rem;
+        }
+
+        .testimonial .author {
+            color: var(--accent-turquoise);
+            font-weight: 500;
+            margin-top: .7rem;
+        }
+
+        .testimonial p {
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--bg-secondary);
+            padding: 4rem 1.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.1rem;
+        }
+
+		.foot_data{
+			display:grid; 
+			grid-template-columns: 1fr;
+			gap: 16px; 
+		}
+		
+		.container_btnToggle{
+			display:flex; 
+			argin-top:1rem;gap:1rem; 
+			justify-content: flex-end;
+		}
+		
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+			font-family: 'Georgia', serif;
+        }
+		.info_map{
+			align-items: center;
+		}
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+			font-size: clamp(.6em, 4vw, .9em);
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--accent-turquoise);
+        }
+		.footer-section{
+			
+		}
+		
+		.map_content{
+			display:flex; 
+			align-items:center;
+			justify-content;
+			width:340px; 
+			padding:2px; 
+			background:var(--text-secondary); 
+		}
+
+
+            <!-- background: linear-gradient(135deg, var(--accent-purple), var(--accent-turquoise)); -->
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+		
+		.contact-icon > img{max-width: 60%;}
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+		
+		.btn_float_back{
+            opacity: 0;
+            visibility: hidden;
+			display: flex
+			justify-content: center;
+			align-items: center;
+			border:1px solid transparent;
+			position: fixed; 
+			right:1.5rem; 
+			bottom:1rem;
+			padding:.5rem;
+			border-radius:50%;
+            width: 45px;
+            height: 45px;
+			z-index:10;
+			box-shadow:1px 1px 3px var(--accent-turquoise);
+			transition:all .3s ease-in-out;
+		}
+		.btn_float_back:hover{border-color:var(--accent-turquoise);scale:1.2;}
+		
+		.btn_float_back a { text-decoration: none;}
+		
+		.btn_float_back.visible {
+            opacity: 1;
+            visibility: visible;
+		}
+
+        /* ========== RESPONSIVE BREAKPOINTS ========== */
+        
+        /* Small devices (576px and up) */
+       
+
+		@media (min-width:550px){
+			.about-image{
+				max-width:400px;
+			}
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+		}
+				
+        @media (min-width: 768px) {
+            .header-container {
+                padding: 1.5rem ;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }			
+			
+            .about {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav {
+                max-width: 350px; 
+                background:none;
+                padding: 0px;
+            }
+			
+			
+			 .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-content {
+                padding: 10px;
+            }
+
+            .close-modal {
+                right: 20px;
+                top: 10px;
+            }
+			
+			.footer-doble-columna {
+			  grid-column: span 2; 
+			}
+			.map_content{width: 100%;background: #ab6621;}
+			.map_content > iframe{width: 100%;}
+		
+        }
+		
+        /* Large devices (992px and up) */
+        @media (min-width: 992px) {
+            .hamburger {
+                display: none;
+            }
+
+            nav {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: row;
+                position: static;
+                width: auto;
+                height: auto;
+                max-width: none;
+                box-shadow: none;
+                padding: 0; 
+				clip-path:circle(100% at center);
+            }
+
+            nav ul {
+                display: flex;
+                gap: 2rem;
+            }
+
+            nav ul li {
+                margin: 0;
+                opacity: 1;
+                transform: none;
+            }
+
+            nav a {
+                font-size: .8rem;
+            }
+			
+			.card-content {
+				text-align: left;
+			}
+			
+			.about-image{
+				max-width:450px;
+			}
+			
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+			
+			 .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }			
+        }
+
+        /* Extra large devices (1200px and up) */
+        @media (min-width: 1200px) {
+		
+            nav a {
+                font-size: 1em;
+            }
+			
+            .hero-content {
+                max-width: 1000px;
+            }
+
+            section {
+                margin-bottom: 8rem;
+            }
+			
+			 .cards-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            transform: translateY(var(--scroll-y, 0));
+            transition: transform 0.2s linear;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header role="banner"  id="header">
+        <div class="header-container">
+            <a href="#" class="logo" aria-label="Centro Holístico Colibrí">
+                <div class="logo-icon">
+					<img src="imgs/logo.png"/>
+				</div>
+                <span></span>
+            </a>
+            <div style="display: flex; align-items: center;">
+                <div class="hamburger" id="hamburger" aria-label="Menú" role="button" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+		
+        <nav id="nav" role="navigation" aria-label="Navegación principal">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quienesSomos">Quiénes Somos</a></li>
+                <li><a href="#NuestraMision">Nuestra Mision</a></li>
+                <li><a href="#servicios">Nuestros Espacios</a></li>
+                <li><a href="#hierbas">Hierbas Terapeuticas</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="hero-content parallax">
+            <h1>Centro Holístico Colibrí</h1>
+            <h2>Un camino de transformación para volver a tu esencia divina</h2>
+            <!-- <a href="#about" class="cta-button">Conoce más</a> -->
+        </div>
+        <div class="scroll-indicator">
+            <span style="font-size: 2rem;"><img src="imgs/logo.png"alt="imgagen logo" width="100" height="50"/></span>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- ABOUT SECTION -->
+        <section class="about">
+			<div class="about-image-container" id="about">
+                <img
+                    class="about-image lazy-bg" 
+                    data-src="imgs/r2.png"
+                    src="imgs/r2.png"
+                    alt="Verónica Sosa - Terapeuta Holística"
+                />
+            </div>
+            
+            <div class="about-content">
+                <article class="about_text_content">
+                    <h2>Bienvenidos a tu Espacio de Sanación</h2>
+                    <p class="about_text">Mi nombre es <strong  style="display: inline; font-size: inherit;">Verónica Sosa</strong>. <br>Soy Terapeuta Holística, guardiana del Rito del Útero y del Corazón, y practicante de Barras de Access.</p>
+					<p class="about_text">Honro el camino del alma y acompaño a cada ser a sanar su corazón, a recordar su luz interior y a reconectar con la energía sagrada que habita en ellos.</p>
+                    <p class="about_text">Mi propósito es guiar procesos de transformación que permitan manifestar abundancia, armonía y plenitud desde la esencia más profunda.</p>
+					<p class="about_text">Si resuena con tu alma, con amor y compromiso, te espero para acompañar tu proceso de sanación consciente.</p>
+                </article>
+				
+            </div>
+			
+        </section>
+		
+        <section id="quienesSomos">
+			 <div class="about-content">
+				<article class="about_text" >
+					<h2 class="section-title">Quiénes Somos</h2>					    
+						<p class="about_text">
+							 Desde mi vocación de servicio, con amor, entrega y profundo respeto por tu camino, ofrezco una 
+							<strong>guía amorosa y un acompañamiento consciente</strong>. Te invito a iniciar un tránsito interior, 
+							un regreso a lo esencial, donde el alma se reconoce, libera lo que ya no necesita y recupera su luz natural.
+						</p>
+						 <p class="about_text">
+							  Honro la apertura de este espacio sagrado, nacido como un lugar de presencia y conciencia, creado para 
+								acompañarte en procesos de sanación, autoconocimiento y despertar interior.
+						</p>						
+						<p class="about_text">
+							Con amor y gratitud,<br>
+							<strong>Verónica — la eterna aprendiz</strong> 🥰
+						</p>
+				 </article>
+            </div>
+        </section>
+			
+        <section id="NuestraMision">
+			<div class="about-section" >
+				<article class="about_text">
+					<h2 class="section-title">Nuestra Misión</h2>
+					<p class="about_text">
+						Sostengo este espacio como un círculo sagrado de presencia y resguardo, donde el alma es llamada a 
+						reconocerse en su verdad esencial, a liberar memorias antiguas y a disponerse a una forma de vida más 
+						íntegra, armónica y fiel a su origen. Desde esta alineación interna, la <strong>abundancia, la prosperidad y el 
+						merecimiento</strong> se manifiestan como dones naturales del equilibrio restaurado.
+					</p>
+
+					<p class="about_text">
+						Honro la <strong>sanación del alma como un rito consciente y sagrado</strong>, en el que acompaño el despertar de 
+						la luz interior y la integración del potencial esencial que habita en cada ser. 
+					</p>
+					<p class="about_text">
+						Mi presencia sostiene un 
+						<strong>tránsito profundo de transformación, reconexión espiritual y expansión de la conciencia</strong>, respetando 
+						el tiempo y el pulso propio de cada proceso.
+					</p>
+
+					<p class="about_text">
+						Este es un umbral de silencio y presencia, donde la verdadera naturaleza del ser es recordada.
+					</p>
+
+					<p class="about_text">
+						Un sendero de iniciación interior que guía el regreso a la esencia divina.
+					</p>
+
+					<p class="about_text">
+						Sanación y despertar consciente al servicio de la expansión del Ser.
+					</p>
+				</article>
+			</div>
+			
+        </section>
+		
+
+        <!-- SERVICES SECTION -->
+        <section id="servicios">
+            <h2 class="section-title">Nuestros Espacios</h2>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded dynamically -->
+            </div>
+        </section>
+		
+		<section class="hirbas" id="hierbas">
+						<div class="hierbas_container">
+			<h2>🌿 Hierbas Medicinales & Terapias Alternativas 🌿</h2>
+				
+				<div class="cards-grid" id="cardsContainer"></div>
+			</div>
+
+			<!-- Modal -->
+			<div id="modal_hierbas" class="modal">
+				<span class="close-modal">&times;</span>
+				<div class="modal-content">
+					<h2 class="modal-title" id="modalTitle"></h2>
+					<img class="modal-image" id="modalImage1" alt="Vista 1">
+					<img class="modal-image" id="modalImage2" alt="Vista 2">
+				</div>
+			</div>
+		</section>
+		
+    </main>
+
+    <!-- TESTIMONIALS ASIDE -->
+    <aside aria-label="Testimonios" id="testimonios">
+        <div class="testimonials-container">
+            <h2 class="section-title">Lo que dicen de nosotros</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p >"Una experiencia transformadora. Verónica tiene un don especial para guiarte en tu proceso de sanación."</p>
+                    <div class="author">@florecer_mdp</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Gracias por ayudarme a reconectar con mi esencia. El trabajo con las terapias holísticas ha cambiado mi vida."</p>
+                    <div class="author">@eli.activatugrandeza</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Profesionalismo, calidez y dedicación. Un espacio seguro para sanar y crecer."</p>
+                    <div class="author">@lasmadreselvas_terapias8</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- FOOTER -->
+    <footer id="contacto" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-section foot_data">
+				<div class="contact_data">				
+					<h3>Contacto</h3>
+					<div class="contact-info">
+						<a href="https://wa.me/59898679029" class="contact-item" target="_blank" rel="noopener" aria-label="WhatsApp">
+							<div class="contact-icon"><img src="imgs/icons8-whatsapp-64.png"/></div>
+							<span>Whats App</span>						
+						</a>
+						<a href="https://www.instagram.com/veronicasosa.holistica?utm_source=qr&igsh=MTBnNXJuczIxOTVucg%3D%3D" class="contact-item" target="_blank" rel="noopener" aria-label="Instagram">
+							<div class="contact-icon"><img src="imgs/insta1.png"/></div>
+							<span>@colibriholistico</span>						
+						</a>					
+						<a href="https://www.facebook.com/verito.sosa.9026" class="contact-item" target="_blank" rel="noopener" aria-label="Facebook">
+							<div class="contact-icon"><img src="imgs/facebook3.png"/></div>
+							<span>Vero Sosa</span>
+						</a>
+							
+					</div>
+				</div>
+				
+				<div class="container_btnToggle">
+					<p id="pCambiarTema" class="about-phrase"></p>
+					<button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema"></button>	
+				</div>
+			</div>
+            <div class="footer-section">                
+				<div class="footer-ubicacion">
+					<h3>Ubicación</h3>
+					<div class="contact-info info_map">
+						<div class="contact-item">
+							<div class="contact-icon" title="abrir mapa" onclick="openMap()"> <span><i>📍 Clicá aquí y agranda el mapa </i></span> 
+							</div>
+						</div>
+						<div class="map_content">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1157.501764381877!2d-55.71480514082413!3d-34.74007592499251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959ff64cabf88335%3A0x644bb8c509211cc1!2s%20Centro%20Holítico%20Colibrí!5e1!3m2!1ses!2suy!4v1764009174466!5m2!1ses!2suy" 
+								width="330"height="300"style="border:0;"allowfullscreen=""loading="lazy" 
+								referrerpolicy="no-referrer-when-downgrade"target="_blank">
+							</iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			 <div class="footer-section footer-doble-columna"> 
+				<div class="footer-bottom">
+					<p>&copy; 2025 Centro Holístico Colibrí <br> Hecho con ♥️ </p> 
+					Todos los derechos reservados</p>
+				</div>
+			</div>
+    </footer>
+	
+	<button id="btn_float_back" class="btn_float_back" aria-label="Volver arriba"> ↑ </button>
+
+    <script>
+	
+	// ========== Small utilities ==========
+    function openMap(){
+     window.open('https://maps.app.goo.gl/rRSViQbqMuURfKJF7', '_blank');
+    }
+	
+        // ========== IMAGES OBJECT ==========
+        const imagesData = {
+            services: [
+                {
+                    id: 'tameana',
+                    title: 'Terapia Tameana',
+                    description: 'Una práctica ancestral de sanación energética que trabaja con geometría sagrada para equilibrar y armonizar tu campo energético.',
+                    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80'
+                },
+                {
+                    id: 'flores-bach',
+                    title: 'Flores de Bach',
+                    description: 'Terapia natural basada en esencias florales que ayuda a equilibrar estados emocionales y promover el bienestar integral.',
+                    image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80'
+                },
+                {
+                    id: 'reiki',
+                    title: 'Reiki',
+                    description: 'Técnica de armonización energética que canaliza la energía universal para promover la sanación física, emocional y espiritual.',
+                    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80'
+                },
+                {
+                    id: 'talleres',
+                    title: 'Cursos y Talleres',
+                    description: 'Espacios de aprendizaje y crecimiento personal donde compartimos conocimientos sobre terapias holísticas y desarrollo espiritual.',
+                    image: 'https://images.unsplash.com/photo-1499728603263-13726abce5fd?w=800&q=80'
+                },
+                {
+                    id: 'rito-utero',
+                    title: 'Rito del Útero',
+                    description: 'Ceremonia sagrada que busca reconectar a la mujer con su energía femenina, su linaje ancestral y su poder creativo, liberando miedos y dolencias emocionales y físicas para renovar el cuerpo y la conciencia, a menudo a través de prácticas de visualización y conexión con la Tierra y la Madre Divina.',
+                    image: 'imgs/c5.png'
+                },
+                {
+                    id: 'barras-access',
+                    title: 'Barras de Access',
+                    description: ' terapia energética que consiste en tocar suavemente 32 puntos en la cabeza para liberar pensamientos, ideas y creencias limitantes que se acumulan, funcionando como un "reset" cerebral para aliviar el estrés, la ansiedad y desbloqueo.',
+                    image: 'imgs/C1.png'
+                },
+                {
+                    id: 'rito-corazon',
+                    title: 'Rito del Corazón',
+                    description: 'Sanación del linaje paterno en ceremonias de sanación y conexión emocional profunda. Restaurar la energía y el amorcelebrar una relación de forma auténtica y personal.',
+                    image: 'imgs/c6.png'
+                },
+                {
+                    id: 'mesa-radionica',
+                    title: 'Mesa Radiónica Cuántica',
+                    description: 'Estudio de energías sutiles,para reequilibrar energéticamente personas, lugares y situaciones  armonizando el campo energético a través del uso de símbolos.',
+                    image: 'imgs/c8.png'
+                },
+                {
+                    id: 'regisros-akashicos',
+                    title: 'Registros Akáshicos',
+                    description: 'Biblioteca energética universal donde se guarda la memoria de toda la existencia: cada pensamiento, emoción, acción y experiencia de cada alma a lo largo de todas sus vidas y reencarnaciones, incluyendo el pasado, presente y futuro, accesibles a través de la meditación, intuición o un lector especializado.',
+                    image: 'imgs/c7.png'
+                }
+				,
+                {
+                    id: 'masajes-bioenergéticos',
+                    title: 'Masajes Bioenergéticos',
+                    description: 'Terapias holísticas que combinan técnicas físicas y energéticas para liberar bloqueos, armonizar el flujo de energía vital (chi o prana) y restaurar el equilibrio cuerpo-mente-espíritu, trabajando con puntos de acupresión, movimientos suaves y vibraciones (como cuencos tibetanos) para aliviar estrés, ansiedad, dolencias emocionales y físicas.',
+                    image: 'imgs/c3.png'
+                }
+            ]
+        };
+		 // Datos de las hierbas con imágenes
+        const herbsData = [
+            {
+                name: "Lavanda",
+                icon: "💜",
+                description: [
+                    "La lavanda es una de las hierbas más versátiles en terapias alternativas. Su aroma suave y floral la convierte en protagonista de la aromaterapia para reducir el estrés y la ansiedad.",
+                    "En Feng Shui, se coloca en el dormitorio para promover el descanso. Sus tinturas ayudan con dolores de cabeza y problemas digestivos nerviosos."
+                ],
+                tags: ["Aromaterapia", "Tinturas", "Feng Shui"],
+                image1: "imgs/lavanda.jpg",
+                image2: "imgs/lavanda.jpg"
+            },
+            {
+                name: "Menta",
+                icon: "🌱",
+                description: [
+                    "La menta es refrescante y estimulante, perfecta para mejorar la concentración y despejar la mente. En aromaterapia, su aceite esencial revitaliza y energiza el ambiente.",
+                    "Las tinturas de menta alivian problemas digestivos, náuseas y dolores de cabeza. En Feng Shui, representa la prosperidad y se coloca en áreas de trabajo."
+                ],
+                tags: ["Aromaterapia", "Tinturas", "Digestivo"],
+                image1: "imgs/menta.jpg",
+                image2: "imgs/menta.jpg"
+            },
+            {
+                name: "Romero",
+                icon: "🌿",
+                description: [
+                    "El romero es conocido por mejorar la memoria y la claridad mental. Su aroma intenso estimula la circulación sanguínea y fortalece el sistema inmunológico.",
+                    "En tinturas, ayuda con dolores musculares y articulares. El Feng Shui lo utiliza como protector energético en entradas de hogares y espacios de estudio."
+                ],
+                tags: ["Memoria", "Protección", "Tinturas"],
+                image1: "imgs/romero.jpg",
+                image2: "imgs/romero.jpg"
+            },
+            {
+                name: "Manzanilla",
+                icon: "🌼",
+                description: [
+                    "La manzanilla es el símbolo de la calma y la tranquilidad. Su infusión es ideal para aliviar el insomnio, la ansiedad y problemas digestivos relacionados con el estrés.",
+                    "En aromaterapia, su aceite suave relaja y equilibra las emociones. Las tinturas de manzanilla son antiinflamatorias y ayudan con cólicos y espasmos."
+                ],
+                tags: ["Relajante", "Aromaterapia", "Digestivo"],
+                image1: "imgs/manzanilla.jpg",
+                image2: "imgs/manzanilla.jpg"
+            },
+            {
+                name: "Salvia",
+                icon: "🍃",
+                description: [
+                    "La salvia es sagrada en muchas culturas. Se utiliza para limpiezas energéticas y purificación de espacios en Feng Shui, quemándola como sahumerio.",
+                    "Sus propiedades medicinales incluyen alivio de problemas menstruales y menopausia. Las tinturas de salvia son antisépticas y ayudan con inflamaciones de garganta."
+                ],
+                tags: ["Purificación", "Feng Shui", "Hormonal"],
+                image1: "imgs/salvia.jpg",
+                image2: "imgs/salvia.jpg"
+            },
+            {
+                name: "Eucalipto",
+                icon: "🌳",
+                description: [
+                    "El eucalipto es poderoso para problemas respiratorios. Su aroma penetrante despeja las vías respiratorias y alivia la congestión nasal y la tos.",
+                    "En aromaterapia, se utiliza en vaporizaciones. Las tinturas tienen propiedades antibacterianas. En Feng Shui, el eucalipto purifica el aire y atrae energía sanadora."
+                ],
+                tags: ["Respiratorio", "Aromaterapia", "Antibacteriano"],
+                image1: "imgs/eucalipto.jpg",
+                image2: "imgs/eucalipto.jpg"
+            },
+            {
+                name: "Jengibre",
+                icon: "🔥",
+                description: [
+                    "El jengibre es un potente antiinflamatorio natural que mejora la circulación y estimula el metabolismo. Es excelente para náuseas, mareos y problemas digestivos.",
+                    "Sus tinturas alivian dolores articulares y musculares. En Feng Shui, el jengibre representa el elemento fuego y se asocia con la vitalidad y la pasión."
+                ],
+                tags: ["Digestivo", "Circulación", "Tinturas"],
+                image1: "imgs/jengibre.jpg",
+                image2: "imgs/jengibre.jpg"
+            },
+            {
+                name: "Caléndula",
+                icon: "🌻",
+                description: [
+                    "La caléndula es la reina de la sanación cutánea. Sus propiedades antiinflamatorias y cicatrizantes la hacen ideal para heridas, quemaduras y problemas de piel.",
+                    "En tinturas y aceites, alivia dermatitis y eczemas. Su color dorado la conecta con el elemento fuego en Feng Shui, atrayendo alegría y prosperidad."
+                ],
+                tags: ["Piel", "Cicatrizante", "Tinturas"],
+                image1: "imgs/calendu.jpg",
+                image2: "imgs/calendu.jpg"
+            },
+            {
+                name: "Valeriana",
+                icon: "😴",
+                description: [
+                    "La valeriana es un sedante natural poderoso. Se utiliza para tratar insomnio severo, ansiedad y nerviosismo. Ayuda a conciliar el sueño profundo y reparador.",
+                    "Sus tinturas reducen la tensión muscular y calman el sistema nervioso. En espacios de descanso, su presencia según el Feng Shui promueve la relajación profunda."
+                ],
+                tags: ["Sueño", "Sedante", "Tinturas"],
+                image1: "imgs/valeriana.jpg",
+                image2: "imgs/valeriana.jpg"
+            },
+            {
+                name: "Tomillo",
+                icon: "🌿",
+                description: [
+                    "El tomillo es un antibiótico natural con poderosas propiedades antimicrobianas. Combate infecciones respiratorias, tos y bronquitis de manera efectiva.",
+                    "Sus tinturas fortalecen el sistema inmunológico. En aromaterapia, purifica el ambiente. El Feng Shui lo asocia con coraje y protección espiritual."
+                ],
+                tags: ["Antibiótico", "Respiratorio", "Protección"],
+                image1: "imgs/tomillo.jpg",
+                image2: "imgs/tomillo.jpg"
+            },
+            {
+                name: "Pasiflora",
+                icon: "💮",
+                description: [
+                    "La pasiflora es un ansiolítico natural que calma la mente sin causar somnolencia excesiva. Es ideal para ansiedad, nerviosismo y tensión emocional.",
+                    "Sus tinturas alivian dolores de cabeza por estrés. En Feng Shui, su flor exótica simboliza la transformación espiritual y se coloca en espacios de meditación."
+                ],
+                tags: ["Ansiedad", "Tinturas", "Meditación"],
+                image1: "imgs/Burucuya.jpg",
+                image2: "imgs/Burucuya.jpg"
+            },
+            {
+                name: "Madreselva ",
+                icon: "🍃",
+                description: [
+                    "Destacada por sus propiedades antiinflamatorias, antibacterianas y antioxidantes, que ayudan a combatir infecciones respiratorias como gripe y resfriados, aliviar el acné y la piel irritada",
+                    "Se usa en infusiones, aceites esenciales y en aromaterapia para reducir el estrés, mejorar la piel y como remedio para la tos y la fiebre. ."
+                ],
+                tags: ["Ansiedad", "Tinturas", "Meditación"],
+                image1: "imgs/madreselva.jpg",
+                image2: "imgs/madreselva.jpg"
+            }
+			
+			
+        ];
+
+        // ========== THEME TOGGLE ==========
+		 const html = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const pCambiarTema = document.getElementById('pCambiarTema');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+			
+			//pCambiarTema.textContent = '¡Este es el nuevo texto!';
+			pCambiarTema.textContent = theme === 'light' ? 'Cambia a tema claro' : 'Cambia a tema oscuro';
+        });
+			 
+        function updateThemeIcon(theme) {
+			//<!-- const themeToggle = document.getElementById('themeToggle'); -->
+            //<!-- themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙'; -->
+			console.log(`Tema del sistema detectado y guardado:${theme}` );
+        }
+		function getCurrentTheme(){
+			return currenTheme = localStorage.getItem('theme');
+		}
+		function getSystemTheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+		function applyTheme(theme){
+			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				localStorage.setItem('theme', 'dark');
+				html.setAttribute('data-theme', 'dark');
+				cambiarTexto('claro');
+		   }
+		   else{
+				localStorage.setItem('theme', 'light');
+				html.setAttribute('data-theme', 'light');
+				updateThemeIcon('light');
+				cambiarTexto('oscuro');
+				}
+			}
+			
+		function cambiarTexto(tema){
+		 
+			pCambiarTema.textContent = `Cambia a tema ${tema}` ;
+		}
+			
+		 // Detectar cambios en el tema del sistema a dark
+		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {  
+		applyTheme('dark');
+	   });
+		
+		 function initTheme() {
+			let savedTheme = getCurrentTheme();
+			if (!savedTheme) {
+                savedTheme = getSystemTheme();
+                localStorage.setItem('theme', savedTheme);
+                console.log(`Tema del sistema detectado y guardado:${savedTheme}`);
+            } else {
+                console.log(`Tema cargado desde localStorage:${savedTheme}`);
+            }
+			applyTheme(savedTheme);	
+			
+        }
+
+        // ========== HAMBURGER MENU ==========
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+
+        // ========== HEADER SCROLL EFFECT ==========
+        const header = document.getElementById('header');
+        const btn_float_back = document.getElementById('btn_float_back');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+			if (currentScroll > 700) {
+                header.classList.add('scrolled');
+            }
+			else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+			
+        });
+		
+		 // Scroll to top button
+			 window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                btn_float_back.classList.add('visible');
+            } else {
+                btn_float_back.classList.remove('visible');
+            }
+        });
+		
+		btn_float_back.addEventListener('click', () => {
+            window.scrollTo({
+                top:0,
+                behavior: 'smooth'				
+            });
+			
+        });
+        // ========== PARALLAX EFFECT ==========
+        const parallaxElements = document.querySelectorAll('.parallax');
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            
+            parallaxElements.forEach(el => {
+                const speed = 0.5;
+                el.style.setProperty('--scroll-y', `${scrolled * speed}px`);
+            });
+        });
+		
+
+        // ========== INTERSECTION OBSERVER FOR ANIMATIONS ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // ========== LAZY LOADING IMAGES ==========
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.addEventListener('load', () => {
+						img.style.borderRadius="15%";
+						img.style.border="2px solid var(--bg-secondary)";
+                            img.classList.add('loaded');
+                        });
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+		
+		 // Observe all sections
+        document.querySelectorAll('.about-image').forEach(image => {
+            imageObserver.observe(image);
+        });
+
+        // ========== RENDER SERVICES ==========
+        function renderServices() {
+            const servicesGrid = document.getElementById('servicesGrid');
+            
+            imagesData.services.forEach((service, index) => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                card.innerHTML = `
+                    <img 
+                        class="service-image lazy-bg" 
+                        data-src="${service.image}" 
+                        alt="${service.title}"
+                        loading="lazy"
+                    />
+                    <h3>${service.title}</h3>
+                    <p>${service.description}</p>
+                `;
+                
+                servicesGrid.appendChild(card);
+                
+                // Animate card entrance
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+                
+                // Observe the image for lazy loading
+                const img = card.querySelector('img');
+                imageObserver.observe(img);
+            });
+        }
+
+        // ========== SMOOTH SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ========== MICRO-INTERACTIONS ==========
+        // Add ripple effect to buttons
+        document.querySelectorAll('.cta-button, .contact-item').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ========== CURSOR TRAIL EFFECT (Optional Enhancement) ==========
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+       
+        // ========== PERFORMANCE OPTIMIZATION ==========
+        // Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                window.cancelAnimationFrame(scrollTimeout);
+            }
+            
+            scrollTimeout = window.requestAnimationFrame(() => {
+                // Your scroll code here
+            });
+        }, { passive: true });
+
+        // ========== ACCESSIBILITY ENHANCEMENTS ==========
+        // Keyboard navigation for hamburger menu
+        hamburger.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                hamburger.click();
+            }
+        });
+
+        // Focus trap in mobile menu when open
+        nav.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                hamburger.focus();				
+            }
+        });
+		
+		// ***********  hierbas container   **********************/
+        // Función para abrir el modal
+        function openModal(index) {
+            const herb = herbsData[index];
+            const modal = document.getElementById('modal_hierbas');
+            
+            document.getElementById('modalTitle').textContent = herb.name;
+            document.getElementById('modalImage1').src = herb.image1;
+            document.getElementById('modalImage2').src = herb.image2;
+            
+            modal.classList.add('active');
+        }
+        // Función para cerrar el modal
+        function closeModal() {
+            const modal = document.getElementById('modal_hierbas');
+            modal.classList.remove('active');
+        }
+
+		function createCards() {
+            const container = document.getElementById('cardsContainer');
+            
+            herbsData.forEach((herb, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => openModal(index);
+                
+                card.innerHTML = `
+                    <img src="${herb.image1}" alt="${herb.name}" class="card-image">
+                    <div class="card-icon">${herb.icon}</div>
+                    <h2 class="card-title">${herb.name}</h2>
+                    <div class="card-content">
+                        <p>${herb.description[0]}</p>
+                        <p>${herb.description[1]}</p>
+                    </div>
+                    <div class="therapy-tags">
+                        ${herb.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderServices();
+            
+            setTimeout(() => {
+                document.querySelector('.hero-content').style.opacity = '1';
+            }, 100);
+        });
+		
+		 window.onscroll = ()=>{myFucionScroll()};
+		 
+		 function myFucionScroll(){
+			const html = document.documentElement;
+			const bodyDiv = document.body;
+			let yOffset = window.scrollY;
+		  
+		   if (yOffset > 300) {
+		     
+			html.dataset.autor = 'Progranacion Web';
+			bodyDiv.dataset.userId = 'Hmby';		 			
+			bodyDiv.setAttribute('tabindex', '1');
+				
+				setTimeout(() => {
+					console.log('BODY data set = ' + bodyDiv.getAttribute('data-user-id'));
+					console.log(`HTML autor = ${html.getAttribute('data-autor')}`);
+				}, 2000);
+		  }else {
+				
+				html.dataset.autor = 'Kikiriya'
+				console.log(`HTML autor = ${html.getAttribute('data-autor')}`);
+		  }		 			
+		 }	
+		
+        <!-- // Event listeners -->
+        document.addEventListener('DOMContentLoaded', () => {
+            createCards();
+            
+            <!-- // Cerrar modal al hacer clic en la X -->
+            document.querySelector('.close-modal').addEventListener('click', closeModal);
+            
+            <!-- // Cerrar modal al hacer clic fuera de las imágenes -->
+            document.getElementById('modal_hierbas').addEventListener('click', (e) => {
+                if (e.target.id === 'modal_hierbas') {
+                    closeModal();
+                }
+            });
+            
+            <!-- // Cerrar modal con la tecla ESC -->
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        });
+		document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+		});
+		
+
+        <!-- // ========== SEO & ANALYTICS READY ==========
+        // You can add Google Analytics or other tracking here -->
+        console.log('Centro Holístico Colibrí - Website loaded successfully');
+    </script>
+</body>
+</html>
