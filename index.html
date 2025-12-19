@@ -32,6 +32,7 @@
             --bg-primary: #faf9f7;
             --bg-secondary: #f3f1ed;
             --bg-accent: #e8e4dd;
+			--bg_hierbas:#f3f7ef;
             --text-primary: #2d2a26;
             --text-secondary: #5a5550;
             --text-muted: #8a857f;
@@ -43,7 +44,7 @@
             --accent-sage: #87a878;
             --border-color: #d4cfc7;
             --shadow: rgba(45, 42, 38, 0.08);
-            --overlay: rgba(45, 42, 38, 0.6);
+            --overlay: rgb(59 37 98 / 89%);
 			--overlay_menu:#a1a2d3;
 			--text_brawn:(#ebc39b);
 			--colorGold:#e2b374;
@@ -54,6 +55,7 @@
             --bg-primary: #1a1816;
             --bg-secondary: #252220;
             --bg-accent: #2f2c29;
+			--bg_hierbas:#545250ad;
             --text-primary: #f3f1ed;
             --text-secondary: #c4c0b8;
             --text-muted: #8a857f;
@@ -122,8 +124,9 @@
         }
 
         img.loaded {
-            opacity: 1;
+            opacity: .9;
         }
+		
 
         /* ========== HEADER ========== */
        
@@ -358,9 +361,11 @@
 
         .hero-content {
             position: relative;
+			opacity:.4;
             z-index: 1;
             padding: 2rem;
             max-width: 900px;
+			transition:all 1s ease-in-out;
         }
 
         .hero h1 {            
@@ -438,11 +443,36 @@
             50% { transform: translateX(-50%) translateY(10px) scale(1.2); }
         }
 		
-		.about-image{max-width:300px;}
-		.about-image-container{display: flex;justify-content: center;}
+		/*Imagen Hero*/
+		.about_hero_container_container{
+			display: flex;
+			justify-content: center;
+		}
+		
+		.about-image{
+			max-width:300px;
+			transition: all 0.6s ease;
+		}
+		.about-image:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 8px 20px var(--bg-accent);
+		}
+		
+		.lazy_image_heroe {		 
+		  opacity: 0;
+		  transform: translateY(24px);
+		  transition: all.6s ease-in-out;
+		}
+		
+		/* Se activa cuando la imagen real ya cargó */
+		
+		.lazy_image_heroe.is-loaded {
+		  opacity: 1;
+		  transform: translateY(0);
+		}
 		
 		/******************* HIERBAS CONTAINER   *****************************/
-		.hierbas_container {
+		.hierbas_container, .container_hierbas_terapeuticas {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -454,6 +484,34 @@
             max-width: 1600px;
 			margin-top: 1rem;
         }
+		.hierbaImg{ 		
+			height: 200px;
+			object-fit: cover;
+			border-radius: 10px;
+			margin-bottom: 15px;
+			transition:transform .4s ease;
+		}
+		
+		.hierbaImg.is_load{opacity:.9;}
+		
+		.hierba_card{
+			background: var(--bg_hierbas);
+			border-radius: 15px;
+			padding: 25px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+			transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+			cursor: pointer;
+		}
+		.hierba_card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+		}
+		.hierba_wrapper{    
+			display: flex;
+			flex-direction: column;
+		}
+		
+		/***********************************************************************/
 		.cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -498,7 +556,7 @@
         }
 
         .card-content {
-            color: #555;
+            color: var(--text-primary);
             line-height: 1.6;
             text-align: justify;
         }
@@ -530,12 +588,12 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 20;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.9);
+            background-color: var(--overlay);
             animation: fadeIn 0.3s ease;
         }
 
@@ -575,7 +633,7 @@
             position: absolute;
             top: 20px;
             right: 40px;
-            color: white;
+            color: var(--colorGold);
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
@@ -584,7 +642,7 @@
         }
 
         .close-modal:hover {
-            color: #667eea;
+            color: var(--overlay_menu);
 			scale:1.3;
         }
 
@@ -595,17 +653,28 @@
 
 
         /* ========== MAIN CONTENT ========== */
-        main {
+        .main {
             max-width: 1400px;
             margin: 0 auto;
             padding:1rem .7rem;
 			font-style: italic;
+			
+            opacity: 1;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+			
+        }
+		
+		.main.visible {
+            opacity: 1;
+            transform: translateY(0);
+
         }
 
         section {
             opacity: 0;
             transform: translateY(10px);
-            transition: all 0.8s ease;
+            transition: all 0.3s ease;
         }
 
         section.visible {
@@ -651,8 +720,9 @@
         .about_text strong, .about_text_content strong {
 			font-weight: 600;
         }
-		.about-phrase{
+		.theme_phrase{
 			font-style: italic;
+			font-size:clamp(.6em, 3vw, .9em);
 		}
 
         .services-grid {
@@ -788,8 +858,9 @@
 		
 		.container_btnToggle{
 			display:flex; 
-			argin-top:1rem;gap:1rem; 
-			justify-content: flex-end;
+			margin-top:1rem;
+			gap:1rem; 
+			justify-content: flex-start;
 		}
 		
         .contact-info {
@@ -898,7 +969,7 @@
                 padding: 1.5rem ;
             }
 
-            main {
+            .main {
                 padding: 2rem 1rem;
             }			
 			
@@ -1026,6 +1097,221 @@
             transform: translateY(var(--scroll-y, 0));
             transition: transform 0.2s linear;
         }
+		
+		<!-- ************CSS PARA CARGA IMAGEN LAZY ******************************* -->
+		.subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .stats {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* Grid de imágenes */
+        .images-grid, .containerHierbas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+		
+		.hierbas_container
+
+        .image-card, hierba_card {
+            background: white;
+            border-radius: 12px;
+			padding: 25px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-card:hover, hierba_card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-wrapper, hierba_wrapper {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+
+        /* Placeholder mientras carga */
+        .image-wrapper::before, hierba_wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .lazy-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .lazy-image.loaded {
+            opacity: .9;
+        }
+
+        .image-info {
+            padding: 15px;
+        }
+
+        .image-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .image-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .status-loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-loaded {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        /* Botones de control */
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Info técnica */
+        .tech-info {
+            background: rgba(255,255,255,0.95);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .tech-info h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-list li:last-child {
+            border-bottom: none;
+        }
+
+        .icon {
+            font-size: 1.5em;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .images-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+			}
     </style>
 </head>
 <body>
@@ -1069,22 +1355,16 @@
             <!-- <a href="#about" class="cta-button">Conoce más</a> -->
         </div>
         <div class="scroll-indicator">
-            <span style="font-size: 2rem;"><img src="imgs/logo.png"alt="imagen-logo" title="imagen-logo" width="100" height="50"/></span>
+            <img src="imgs/logo.png"alt="imagen-logo" title="imagen-logo" width="100" height="50"/>
         </div>
     </section>
-
+	
     <!-- MAIN CONTENT -->
-    <main>
+    <main class="main">
         <!-- ABOUT SECTION -->
         <section class="about">
-			<div class="about-image-container" id="about">
-                <img
-                    class="about-image lazy-bg" 
-                    data-src="imgs/r2.png"
-                    src="imgs/r2.png"
-                    alt="Verónica Sosa - Terapeuta Holística"
-                />
-            </div>
+			 <div class="about_hero_container_container" id="about_hero_container"> 
+            </div> 
             
             <div class="about-content">
                 <article class="about_text_content">
@@ -1157,23 +1437,25 @@
 			
         </section>
 		
-
-        <!-- SERVICES SECTION -->
+<!-- SERVICES SECTION -->
         <section id="servicios">
             <h2 class="section-title">Nuestros Espacios</h2>
             <div class="services-grid" id="servicesGrid">
                 <!-- Services will be loaded dynamically -->
             </div>
         </section>
+        <!-- SERVICES SECTION del cocumento de texto -->
 		
-		<section class="hirbas" id="hierbas">
-						<div class="hierbas_container">
-			<h2>🌿 Hierbas Medicinales & Terapias Alternativas 🌿</h2>
-				
-				<div class="cards-grid" id="cardsContainer"></div>
-			</div>
+    </main>
+	
+	
+	 <!-- Grid de Hierbas -->
 
-			<!-- Modal -->
+	<div class="container_hierbas_terapeuticas" id="hierbas_terapeuticas">
+		<h2>🌿 Hierbas Medicinales & Terapias Alternativas 🌿</h2>
+		<div class="containerHierbas" id="containerHierbas"></div>
+	</div>
+	<!-- Modal -->
 			<div id="modal_hierbas" class="modal">
 				<span class="close-modal">&times;</span>
 				<div class="modal-content">
@@ -1181,10 +1463,8 @@
 					<img class="modal-image" id="modalImage1" alt="Vista 1">
 					<img class="modal-image" id="modalImage2" alt="Vista 2">
 				</div>
-			</div>
-		</section>
-		
-    </main>
+	</div>
+	
 
     <!-- TESTIMONIALS ASIDE -->
     <aside aria-label="Testimonios" id="testimonios">
@@ -1234,8 +1514,8 @@
 				</div>
 				
 				<div class="container_btnToggle">
-					<p id="pCambiarTema" class="about-phrase"></p>
 					<button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema"></button>	
+					<p id="pCambiarTema" class="theme_phrase"></p>
 				</div>
 			</div>
             <div class="footer-section">                
@@ -1619,23 +1899,118 @@
 
         // ========== INTERSECTION OBSERVER FOR ANIMATIONS ==========
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.1, // Se activa cuando el 10% de la imagen es visible
+            rootMargin: '0px 0px -100px 0px' // Carga un poco antes de que entre totalmente en pantalla
         };
+		
+		// Si el navegador soporta IntersectionObserver
+        if ('IntersectionObserver' in window) {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+                     
+					}
+				});
+			}, observerOptions);
+			
+			//entry.target.dataset.autor = 'Andres';
+			// Observe all sections
+			document.querySelectorAll('section').forEach(elemento => {
+			
+							
+				observer.observe(elemento);
+			});
+		
+		}else {
+			// 🚨 Fallback: si no hay soporte, cargar todas las imágenes de inmediato
+			document.querySelectorAll('section').forEach(data => {
+			 console.log("OBSERVER"+data.target);
+			});
+		  };
+		  
+		  
+        // ========== INTERSECTION OBSERVER FOR ANIMATIONS ==========
+		  function setupLazyLoading(){
+		  }
+		  
+		  
+		const observerOpcionales = {
+            root: null, 
+            rootMargin: '200px', <!-- // Cargar 200px antes de ser visible -->
+            threshold: 0.1 <!-- Activar cuando 10% sea visible -->
+        };
+		  
+		const heroImagenObserver = new IntersectionObserver((entrada,observer)=>{
+			entrada.forEach(entry => {
+				if (entry.isIntersecting) {
+					const img = entry.target;
+					
+					const dataSrc = img.dataset.src;
+					
+					 if (dataSrc) {
+                        img.src = dataSrc;
+					
+						img.removeAttribute('data-src');
+						
+						img.addEventListener("load", () => {
+							img.classList.add("is-loaded");
+						  });
+					}
+					
+					observer.unobserve(img); 
+				}
+		  });
+		  },observerOpcionales);
+		  
+		  
+		  function createImageHero() {
+		   const imgHero = document.getElementById('about_hero_container');
+		   
+		   const imagnHero = document.createElement('img');
+		   
+		   imagnHero.className='about-image lazy-bg';
+		   imagnHero.alt='Verónica Sosa - Terapeuta Holística';
+		   imagnHero.dataset.src='imgs/r2.png';
+		   imagnHero.id='r1';
+		   imagnHero.loading='lazy';
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
+		   imagnHero.style.borderRadius='15%';
+		   imagnHero.style.border='2px solid var(--bg-secondary)';
+		   imagnHero.classList.add('lazy_image_heroe');
+		   
+		   imgHero.appendChild(imagnHero);
+		   
+		   <!-- // Observar la imagen -->
+               const img = imgHero.querySelector('.lazy-bg');
+               heroImagenObserver.observe(img);
+			   console.log (`Imagen * ${imagnHero.alt}`);
+		  
+		  }
+		
+		createImageHero(); 
+		
+		//---------/observa MAIN
+		<!-- const observarMain = new IntersectionObserver((entries.observer) => { -->
+					<!-- entries.forEach(entry => { -->
+						<!-- if (entry.isIntersecting) { -->
+						<!-- entry.target.backgroundColor= 'red'; -->
+							<!-- entry.target.classList.add('visible'); -->
+							
+							
+                            <!-- observer.unobserve(img); -->
+							
+						<!-- } -->
+					<!-- }); -->
+				<!-- }, { threshold: 0.1 }); -->
+			
+	// Observe all sections
+			<!-- document.querySelectorAll('main').forEach(el => { -->
+			
+				<!-- observarMain.observe(el); -->
+			<!-- }); -->
+			
+			
         // ========== LAZY LOADING IMAGES ==========
         const imageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1824,7 +2199,7 @@
                 card.onclick = () => openModal(index);
                 
                 card.innerHTML = `
-                    <img src="${herb.image1}" alt="${herb.name}" class="card-image">
+                    <img src="${herb.image1}" alt="${herb.name}" loading="lazy" class="card-image">
                     <div class="card-icon">${herb.icon}</div>
                     <h2 class="card-title">${herb.name}</h2>
                     <div class="card-content">
@@ -1839,16 +2214,28 @@
                 container.appendChild(card);
             });
         }
-
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderServices();
+		
+		
+            <!-- // Cerrar modal al hacer clic en la X -->
+            document.querySelector('.close-modal').addEventListener('click', closeModal);
             
-            setTimeout(() => {
-                document.querySelector('.hero-content').style.opacity = '1';
-            }, 100);
-        });
+            <!-- // Cerrar modal al hacer clic fuera de las imágenes -->
+            document.getElementById('modal_hierbas').addEventListener('click', (e) => {
+                if (e.target.id === 'modal_hierbas') {
+                    closeModal();
+					console.log(`BODY > ${e.target.id} BODY > ${document.body}`);
+                }
+            });
+			
+            
+            <!-- // Cerrar modal con la tecla ESC -->
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+
+			<!-- SCROLL -->
 		
 		 window.onscroll = ()=>{myFucionScroll()};
 		 
@@ -1861,6 +2248,7 @@
 		     
 			html.dataset.autor = 'Progranacion Web';
 			bodyDiv.dataset.userId = 'Hmby';		 			
+			bodyDiv.dataset.autor = 'Andres';		 			
 			bodyDiv.setAttribute('tabindex', '1');
 				
 				setTimeout(() => {
@@ -1876,33 +2264,266 @@
 		
         <!-- // Event listeners -->
         document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+			
+			renderServices();
+            
+            setTimeout(() => {
+                document.querySelector('.hero-content').style.opacity = '1';
+            }, 1000);
+			
             createCards();
             
-            <!-- // Cerrar modal al hacer clic en la X -->
-            document.querySelector('.close-modal').addEventListener('click', closeModal);
-            
-            <!-- // Cerrar modal al hacer clic fuera de las imágenes -->
-            document.getElementById('modal_hierbas').addEventListener('click', (e) => {
-                if (e.target.id === 'modal_hierbas') {
-                    closeModal();
-                }
-            });
-            
-            <!-- // Cerrar modal con la tecla ESC -->
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeModal();
-                }
-            });
         });
-		document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-		});
 		
 
         <!-- // ========== SEO & ANALYTICS READY ==========
         // You can add Google Analytics or other tracking here -->
         console.log('Centro Holístico Colibrí - Website loaded successfully; ver otras fucionalidades');
+		
+		<!-- //************* JS PARA CARGAR IMAGENES LAZY  *************************************// -->
+		
+		<!-- // Datos de imágenes de ejemplo (usando Unsplash) -->
+        const imageData = [
+            { id: 1, title: "Montañas", category: "Naturaleza" },
+            { id: 2, title: "Océano", category: "Naturaleza" },
+            { id: 3, title: "Bosque", category: "Naturaleza" },
+            { id: 4, title: "Ciudad", category: "Urbano" },
+            { id: 5, title: "Desierto", category: "Naturaleza" },
+            { id: 6, title: "Cascada", category: "Naturaleza" },
+            { id: 7, title: "Atardecer", category: "Paisaje" },
+            { id: 8, title: "Lago", category: "Naturaleza" },
+            { id: 9, title: "Playa", category: "Naturaleza" },
+            { id: 10, title: "Nieve", category: "Invierno" },
+            { id: 11, title: "Flores", category: "Flora" },
+            { id: 12, title: "Arquitectura", category: "Urbano" }
+        ];
+
+        <!-- // Estadísticas -->
+        let loadedCount = 0;
+        let loadTimes = [];
+
+        <!-- // Configuración del Intersection Observer -->
+        const observerOptionsImg = {
+            root: null, 
+            rootMargin: '200px', <!-- // Cargar 200px antes de ser visible -->
+            threshold: 0.1 <!-- Activar cuando 10% sea visible -->
+        };
+
+        <!-- // Callback del observer -->
+        const OneImageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    loadImage(img);
+                    observer.unobserve(img); <!--// Dejar de observar después de cargar-->
+                }
+            });
+        }, observerOptionsImg);
+
+        <!-- // Función para cargar una imagen -->
+        function loadImage(img) {
+            const startTime = performance.now();
+            const card = img.closest('.image-card');
+            const statusBadge = card.querySelector('.image-status');
+            
+            statusBadge.textContent = 'Cargando...';
+            statusBadge.className = 'image-status status-loading';
+
+            const dataSrc = img.getAttribute('data-src');
+            
+            if (dataSrc) {
+                img.src = dataSrc;
+                
+                img.onload = () => {
+                    const endTime = performance.now();
+                    const loadTime = Math.round(endTime - startTime);
+                    
+                    img.classList.add('loaded');
+                    img.removeAttribute('data-src');
+                    
+                    statusBadge.textContent = `Cargada (${loadTime}ms)`;
+                    statusBadge.className = 'image-status status-loaded';
+                    
+                    loadedCount++;
+                    loadTimes.push(loadTime);
+                    updateStats();
+                };
+
+                img.onerror = () => {
+                    statusBadge.textContent = 'Error al cargar';
+                    statusBadge.className = 'image-status';
+                    statusBadge.style.background = '#f8d7da';
+                    statusBadge.style.color = '#721c24';
+                };
+            }
+        }
+		
+                <!-- const hierba =  herbsData = [ -->
+            <!-- { -->
+                <!-- name: "Lavanda", -->
+                <!-- icon: "💜", -->
+                <!-- description: [ -->
+                    <!-- "La lavanda es una de las hierbas más versátiles en terapias alternativas. Su aroma suave y floral la convierte en protagonista de la aromaterapia para reducir el estrés y la ansiedad.", -->
+                    <!-- "En Feng Shui, se coloca en el dormitorio para promover el descanso. Sus tinturas ayudan con dolores de cabeza y problemas digestivos nerviosos." -->
+                <!-- ], -->
+                <!-- tags: ["Aromaterapia", "Tinturas", "Feng Shui"], -->
+                <!-- image1: "imgs/lavanda-1.jpg", -->
+                <!-- image2: "imgs/lavanda-1.jpg" -->
+            <!-- }, -->
+			
+			 <!-- imagnHero.className='about-image lazy-bg'; -->
+		   <!-- imagnHero.alt='Verónica Sosa - Terapeuta Holística'; -->
+		   <!-- imagnHero.dataset.src='imgs/r2.png'; -->
+		   <!-- imagnHero.id='r1'; -->
+		   <!-- imagnHero.loading='lazy'; -->
+
+		   <!-- imagnHero.style.borderRadius='15%'; -->
+		   <!-- imagnHero.style.border='2px solid var(--bg-secondary)'; -->
+		   <!-- imagnHero.classList.add('lazy_image_heroe'); -->
+			
+		 function crearHierbasCard(){
+			const gridHierbas = document.getElementById('containerHierbas');
+			herbsData.forEach((herb, index) => {
+				console.log("iCONO"+herb.icon +"-" + index); 
+					
+				const herb_card = document.createElement('div');
+				herb_card.className = 'hierba_card';
+				
+                herb_card.onclick = () => openModal(index);
+				
+				const herb_wrapper = document.createElement('div');
+				herb_wrapper.classList.add('hierba_wrapper');
+				
+				herb_card.appendChild(herb_wrapper);
+				
+				const herb_img = document.createElement('img');
+				herb_img.alt=`${herb.name}`;
+				herb_img.dataset.src = `${herb.image1}`; 
+				herb_img.src = `${herb.image1}`; 
+				herb_img.id = `index`;
+				herb_img.setAttribute('data-user-name', herb.name);
+				herb_img.loading="lazy" ;
+				herb_img.classList.add('hierbaImg');
+				herb_img.classList.add('is_load');	
+				
+				
+				const herb_info =  document.createElement('div');
+				herb_info.className = 'herb_info';				
+				herb_info.innerHTML = `
+				 <div class="card-icon">${herb.icon}</div>
+                    <h2 class="card-title">${herb.name}</h2>
+                    <div class="card-content">
+                        <p>${herb.description[0]}</p>
+                        <p>${herb.description[1]}</p>
+                    </div>
+                    <div class="therapy-tags">
+                        ${herb.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+				`;
+				
+				herb_wrapper.appendChild(herb_img);
+				herb_wrapper.appendChild(herb_info);				
+				
+				gridHierbas.appendChild(herb_card);
+				}
+			)
+			
+			
+			
+		 }
+        <!-- // Crear las tarjetas de imágenes -->
+        function createImageCards() {
+		crearHierbasCard();
+            const grid = document.getElementById('imagesGrid');
+            
+            imageData.forEach(data => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                
+                <!-- // Generar URL de Unsplash con ID único -->
+                const imageUrl = `https://picsum.photos/400/300?random=${data.id}`;
+				
+                card.innerHTML = `
+                    <div class="image-wrapper">
+                        <img 
+                            class="lazy-image" 
+                            data-src="${imageUrl}"
+                            alt="${data.title}"
+							id="${data.id}"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="image-info">
+                        <div class="image-title">${data.title}</div>
+                        <span class="image-status status-loading">Pendiente</span>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+                
+                <!-- // Observar la imagen -->
+                const img = card.querySelector('.lazy-image');
+                OneImageObserver.observe(img);
+            });
+            
+            updateStats();
+        }
+
+        <!-- // Actualizar estadísticas -->
+        function updateStats() {
+            document.getElementById('totalImages').textContent = imageData.length;
+            document.getElementById('loadedImages').textContent = loadedCount;
+            document.getElementById('pendingImages').textContent = imageData.length - loadedCount;
+            
+            if (loadTimes.length > 0) {
+                const avgTime = Math.round(loadTimes.reduce((a, b) => a + b, 0) / loadTimes.length);
+                document.getElementById('loadTime').textContent = avgTime + 'ms';
+            }
+        }
+
+        <!-- // Cargar todas las imágenes inmediatamente -->
+        function loadAllImages() {
+            const allImages = document.querySelectorAll('.lazy-image[data-src]');
+            allImages.forEach(img => {
+                loadImage(img);
+            });
+        }
+
+        <!-- // Reiniciar el demo -->
+        function resetImages() {
+            loadedCount = 0;
+            loadTimes = [];
+            
+            const grid = document.getElementById('imagesGrid');
+            grid.innerHTML = '';
+            
+            createImageCards();
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        <!-- // Scroll al final -->
+        function scrollToBottom() {
+            window.scrollTo({ 
+                top: document.body.scrollHeight, 
+                behavior: 'smooth' 
+            });
+        }
+
+        <!-- // Inicializar -->
+        createImageCards();
+
+        <!-- // Log de técnicas usadas -->
+        console.log('%c🚀 Lazy Loading Implementado', 'font-size: 20px; color: #667eea; font-weight: bold;');
+        console.log('%cTécnicas usadas:', 'font-size: 14px; font-weight: bold;');
+        console.log('✓ Intersection Observer API');
+        console.log('✓ data-src attribute');
+        console.log('✓ rootMargin para precarga');
+        console.log('✓ loading="lazy" nativo como fallback');
+        console.log('✓ Placeholder animado (shimmer effect)');
+        console.log('✓ Performance tracking');
+		
     </script>
 </body>
 </html>
