@@ -92,13 +92,17 @@
             overflow-x: hidden;
             transition: background-color 0.4s ease, color 0.4s ease;
 			position:relative;
+			
         }
 
-		h1{font-size: clamp(2.2em, 8vw, 5em);}
-		h2{font-size: clamp(1.2em, 5vw, 2.0em); color: var(--accent-purple);}
-		h3{font-size: clamp(1.0em, 4vw, 1.7em); color: var(--accent-purple); padding-bottom: 1rem;}
+		h1{font-size: clamp(2.3em, 6vw, 5em);}
 		
-		.hero-content h2{font-size: clamp(1.2em, 8vw, 2.6em); color: var(--accent-purple);}
+		h2{font-size: clamp(1.2em, 5vw, 2em); color: var(--accent-purple);}
+		
+		.hero-content > h2{font-size: clamp(1.2em, 7vw, 2.6em); color: var(--accent-purple);}
+		
+		h3{font-size: clamp(1em, 4vw, 1.7em); color: var(--accent-purple); padding-bottom: 1rem;}
+		
 		
 		p{ font-size: clamp(.8em, 3vw, 1.2em);}
 		
@@ -472,7 +476,7 @@
 		}
 		
 		/******************* HIERBAS CONTAINER   *****************************/
-		.hierbas_container, .container_hierbas_terapeuticas {
+		 .container_hierbas_terapeuticas {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -489,7 +493,8 @@
 			object-fit: cover;
 			border-radius: 10px;
 			margin-bottom: 15px;
-			transition:transform .4s ease;
+			opacity:.2;
+			transition:opacity .9s ease;
 		}
 		
 		.hierbaImg.is_load{opacity:.9;}
@@ -501,6 +506,7 @@
 			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 			transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 			cursor: pointer;
+			height: auto;
 		}
 		.hierba_card:hover {
 			transform: translateY(-10px);
@@ -509,7 +515,29 @@
 		.hierba_wrapper{    
 			display: flex;
 			flex-direction: column;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+            overflow: hidden;
 		}
+		/* Placeholder mientras carga */
+		.hierba_wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+		
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
 		
 		/***********************************************************************/
 		.cards-grid {
@@ -588,25 +616,26 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 20;
+            z-index: 25;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             background-color: var(--overlay);
-            animation: fadeIn 0.3s ease;
+			backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         .modal.active {
             display: flex;
             justify-content: center;
-                align-items: center;
+            align-items: center;
         }
 
         .modal-content {
             position: relative;
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 90vw;
+			max-height: 95vh;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -616,7 +645,8 @@
         .modal-image {
             width: 100%;
             max-width: 600px;
-            height: auto;
+			max-height: 35vh;
+			object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 5px 30px rgba(255,255,255,0.3);
         }
@@ -651,8 +681,6 @@
             to { opacity: 1; }
         }
 
-
-        /* ========== MAIN CONTENT ========== */
         .main {
             max-width: 1400px;
             margin: 0 auto;
@@ -660,23 +688,22 @@
 			font-style: italic;
 			
             opacity: 1;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-			
+            transform: translateY(0px);
+            transition: all 0.3s ease;			
         }
 		
 		.main.visible {
             opacity: 1;
             transform: translateY(0);
-
         }
 
-        section {
+        section { 
+			padding:1rem .7rem;
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(20px);
             transition: all 0.3s ease;
         }
-
+				
         section.visible {
             opacity: 1;
             transform: translateY(0);
@@ -699,14 +726,20 @@
             border-radius: 2px;
         }
 
-        /* About Section */
         .about {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
             align-items: center;
         }
-
+		
+		.about-content{
+			border-radius:.3rem;
+			box-shadow:inset 0px -1px 11px 7px #d7d7d75c;
+			padding:.3rem;
+		}
+		
+		
         .about_text {
             color: var(--text-secondary);           
             line-height: 1.9;
@@ -737,9 +770,9 @@
             border-radius: 20px;
             padding: 1rem;
             border: 1px solid var(--border-color);
-            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            transition: all 0.4s ease;
         }
 
         .service-card::before {
@@ -831,10 +864,9 @@
             line-height: 1.3;
         }
 
-        /* ========== FOOTER ========== */
         footer {
             background: var(--bg-secondary);
-            padding: 4rem 1.5rem 2rem;
+            padding: 2rem .1rem 1rem .3rem;
             border-top: 1px solid var(--border-color);
         }
 
@@ -1066,10 +1098,10 @@
             .testimonials-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }			
+			 footer {
+				padding: 2.5rem .5rem 1rem 1rem;
+			}
+		
         }
 
         /* Extra large devices (1200px and up) */
@@ -1140,48 +1172,6 @@
             margin-bottom: 40px;
         }
 		
-		.hierbas_container
-
-        .image-card, hierba_card {
-            background: white;
-            border-radius: 12px;
-			padding: 25px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .image-card:hover, hierba_card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .image-wrapper, hierba_wrapper {
-            position: relative;
-            width: 100%;
-            height: 250px;
-            background: #f0f0f0;
-            overflow: hidden;
-        }
-
-        /* Placeholder mientras carga */
-        .image-wrapper::before, hierba_wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
         .lazy-image {
             width: 100%;
             height: 100%;
@@ -1300,9 +1290,9 @@
 
         /* Mobile */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
-            }
+            <!-- h1 { -->
+                <!-- font-size: 1.8em; -->
+            <!-- } -->
 
             .images-grid {
                 grid-template-columns: 1fr;
@@ -1336,7 +1326,7 @@
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#quienesSomos">Quiénes Somos</a></li>
-                <li><a href="#NuestraMision">Nuestra Mision</a></li>
+                <li><a href="#nuestraMision">Nuestra Mision</a></li>
                 <li><a href="#servicios">Nuestros Espacios</a></li>
                 <li><a href="#hierbas_terapeuticas">Hierbas Terapeuticas</a></li>
                 <li><a href="#testimonios">Testimonios</a></li>
@@ -1359,8 +1349,7 @@
         </div>
     </section>
 	
-    <!-- MAIN CONTENT -->
-    <main class="main">
+   
         <!-- ABOUT SECTION -->
         <section class="about">
 			 <div class="about_hero_container_container" id="about_hero_container"> 
@@ -1400,8 +1389,8 @@
             </div>
         </section>
 			
-        <section id="NuestraMision">
-			<div class="about-section" >
+        <section id="nuestraMision">
+			<div class="about-content" >
 				<article class="about_text">
 					<h2 class="section-title">Nuestra Misión</h2>
 					<p class="about_text">
@@ -1433,24 +1422,19 @@
 						Sanación y despertar consciente al servicio de la expansión del Ser.
 					</p>
 				</article>
-			</div>
-			
+			</div>			
         </section>
 		
-<!-- SERVICES SECTION -->
         <section id="servicios">
             <h2 class="section-title">Nuestros Espacios</h2>
             <div class="services-grid" id="servicesGrid">
                 <!-- Services will be loaded dynamically -->
             </div>
         </section>
-        <!-- SERVICES SECTION del cocumento de texto -->
 		
-    </main>
-	
+   
 	
 	 <!-- Grid de Hierbas -->
-
 	<div class="container_hierbas_terapeuticas" id="hierbas_terapeuticas">
 		<h2>🌿 Hierbas Medicinales & Terapias Alternativas 🌿</h2>
 		<div class="containerHierbas" id="containerHierbas"></div>
@@ -1463,8 +1447,7 @@
 					<img class="modal-image" id="modalImage1" alt="Vista 1">
 					<img class="modal-image" id="modalImage2" alt="Vista 2">
 				</div>
-	</div>
-	
+	</div>	
 
     <!-- TESTIMONIALS ASIDE -->
     <aside aria-label="Testimonios" id="testimonios">
@@ -1539,7 +1522,7 @@
 			 <div class="footer-section footer-doble-columna"> 
 				<div class="footer-bottom">
 					<p>&copy; 2025 Centro Holístico Colibrí <br> Hecho con ♥️ </p> 
-					Todos los derechos reservados</p>
+					<p>Todos los derechos reservados</p>
 				</div>
 			</div>
     </footer>
@@ -1878,12 +1861,9 @@
         });
 		
 		btn_float_back.addEventListener('click', () => {
-            window.scrollTo({
-                top:0,
-                behavior: 'smooth'				
-            });
-			
+            window.scrollTo({ top:0, behavior: 'smooth' });
         });
+		
         // ========== PARALLAX EFFECT ==========
         const parallaxElements = document.querySelectorAll('.parallax');
 
@@ -1989,26 +1969,6 @@
 		  }
 		
 		createImageHero(); 
-		
-		//---------/observa MAIN
-		<!-- const observarMain = new IntersectionObserver((entries.observer) => { -->
-					<!-- entries.forEach(entry => { -->
-						<!-- if (entry.isIntersecting) { -->
-						<!-- entry.target.backgroundColor= 'red'; -->
-							<!-- entry.target.classList.add('visible'); -->
-							
-							
-                            <!-- observer.unobserve(img); -->
-							
-						<!-- } -->
-					<!-- }); -->
-				<!-- }, { threshold: 0.1 }); -->
-			
-	// Observe all sections
-			<!-- document.querySelectorAll('main').forEach(el => { -->
-			
-				<!-- observarMain.observe(el); -->
-			<!-- }); -->
 			
 			
         // ========== LAZY LOADING IMAGES ==========
@@ -2021,7 +1981,7 @@
                         img.src = img.dataset.src;
                         img.addEventListener('load', () => {
 						img.style.borderRadius="15%";
-						img.style.border="2px solid var(--bg-secondary)";
+						img.style.border="2px solid var(--bg-accent)";
                             img.classList.add('loaded');
                         });
                         imageObserver.unobserve(img);
@@ -2065,7 +2025,7 @@
                     card.style.transition = 'all 0.6s ease';
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
-                }, index * 100);
+                }, index * 200);
                 
                 // Observe the image for lazy loading
                 const img = card.querySelector('img');
@@ -2172,52 +2132,12 @@
             }
         });
 		
-		// ***********  hierbas container   **********************/
-        // Función para abrir el modal
-        function openModal(index) {
-            const herb = herbsData[index];
-            const modal = document.getElementById('modal_hierbas');
-            
-            document.getElementById('modalTitle').textContent = herb.name;
-            document.getElementById('modalImage1').src = herb.image1;
-            document.getElementById('modalImage2').src = herb.image2;
-            
-            modal.classList.add('active');
-        }
-        // Función para cerrar el modal
-        function closeModal() {
-            const modal = document.getElementById('modal_hierbas');
-            modal.classList.remove('active');
-        }
 
-		function createCards() {
-            const container = document.getElementById('cardsContainer');
-            
-            herbsData.forEach((herb, index) => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.onclick = () => openModal(index);
-                
-                card.innerHTML = `
-                    <img src="${herb.image1}" alt="${herb.name}" loading="lazy" class="card-image">
-                    <div class="card-icon">${herb.icon}</div>
-                    <h2 class="card-title">${herb.name}</h2>
-                    <div class="card-content">
-                        <p>${herb.description[0]}</p>
-                        <p>${herb.description[1]}</p>
-                    </div>
-                    <div class="therapy-tags">
-                        ${herb.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                `;
-                
-                container.appendChild(card);
-            });
-        }
 		
-		
+		// ***********  MODAL   **********************/
             <!-- // Cerrar modal al hacer clic en la X -->
             document.querySelector('.close-modal').addEventListener('click', closeModal);
+            document.getElementById('modal_hierbas').addEventListener('click', closeModal);
             
             <!-- // Cerrar modal al hacer clic fuera de las imágenes -->
             document.getElementById('modal_hierbas').addEventListener('click', (e) => {
@@ -2234,6 +2154,24 @@
                     closeModal();
                 }
             });
+			
+        // Función para abrir el modal
+        function openModal(index) {
+            const herb = herbsData[index];
+            const modal = document.getElementById('modal_hierbas');
+            
+            document.getElementById('modalTitle').textContent = herb.name;
+            document.getElementById('modalImage1').src = herb.image1;
+            document.getElementById('modalImage2').src = herb.image2;
+            
+            modal.classList.add('active');
+			
+        }
+        // Función para cerrar el modal
+        function closeModal() {
+            const modal = document.getElementById('modal_hierbas');
+            modal.classList.remove('active');
+        }
 
 			<!-- SCROLL -->
 		
@@ -2272,7 +2210,6 @@
                 document.querySelector('.hero-content').style.opacity = '1';
             }, 1000);
 			
-            createCards();
             
         });
 		
@@ -2359,37 +2296,39 @@
             }
         }
 		
-                <!-- const hierba =  herbsData = [ -->
-            <!-- { -->
-                <!-- name: "Lavanda", -->
-                <!-- icon: "💜", -->
-                <!-- description: [ -->
-                    <!-- "La lavanda es una de las hierbas más versátiles en terapias alternativas. Su aroma suave y floral la convierte en protagonista de la aromaterapia para reducir el estrés y la ansiedad.", -->
-                    <!-- "En Feng Shui, se coloca en el dormitorio para promover el descanso. Sus tinturas ayudan con dolores de cabeza y problemas digestivos nerviosos." -->
-                <!-- ], -->
-                <!-- tags: ["Aromaterapia", "Tinturas", "Feng Shui"], -->
-                <!-- image1: "imgs/lavanda-1.jpg", -->
-                <!-- image2: "imgs/lavanda-1.jpg" -->
-            <!-- }, -->
+		 <!-- // Configuración del Intersection Observer -->
+        const hierbaOptions = {
+            root: null, 
+            rootMargin: '-100px', <!-- // Cargar 200px antes de ser visible -->
+            threshold: 0.1 <!-- Activar cuando 10% sea visible -->
+        };
+		
+        
+			const hierbaObserver = new IntersectionObserver((entrada, observer) => {
 			
-			 <!-- imagnHero.className='about-image lazy-bg'; -->
-		   <!-- imagnHero.alt='Verónica Sosa - Terapeuta Holística'; -->
-		   <!-- imagnHero.dataset.src='imgs/r2.png'; -->
-		   <!-- imagnHero.id='r1'; -->
-		   <!-- imagnHero.loading='lazy'; -->
-
-		   <!-- imagnHero.style.borderRadius='15%'; -->
-		   <!-- imagnHero.style.border='2px solid var(--bg-secondary)'; -->
-		   <!-- imagnHero.classList.add('lazy_image_heroe'); -->
+				entrada.forEach(entry => {
+					if (entry.isIntersecting) {
+					
+						const herba = entry.target;
+						
+						if (herba.dataset.src) {
+							herba.src = herba.dataset.src; 
+							herba.removeAttribute('data-src');
+							herba.addEventListener('load', () => {
+									herba.classList.add('is_load');	
+							});
+						}
+						observer.unobserve(herba); 
+					}
+				});
+			}, hierbaOptions);
 			
 		 function crearHierbasCard(){
 			const gridHierbas = document.getElementById('containerHierbas');
 			herbsData.forEach((herb, index) => {
-				console.log("iCONO"+herb.icon +"-" + index); 
 					
 				const herb_card = document.createElement('div');
-				herb_card.className = 'hierba_card';
-				
+				herb_card.className='hierba_card';				
                 herb_card.onclick = () => openModal(index);
 				
 				const herb_wrapper = document.createElement('div');
@@ -2398,14 +2337,12 @@
 				herb_card.appendChild(herb_wrapper);
 				
 				const herb_img = document.createElement('img');
-				herb_img.alt=`${herb.name}`;
 				herb_img.dataset.src = `${herb.image1}`; 
-				herb_img.src = `${herb.image1}`; 
+				herb_img.classList.add ('hierbaImg');
+				herb_img.alt=`${herb.name}`;
 				herb_img.id = `index`;
 				herb_img.setAttribute('data-user-name', herb.name);
-				herb_img.loading="lazy" ;
-				herb_img.classList.add('hierbaImg');
-				herb_img.classList.add('is_load');	
+				herb_img.loading='lazy' ;
 				
 				
 				const herb_info =  document.createElement('div');
@@ -2426,60 +2363,27 @@
 				herb_wrapper.appendChild(herb_info);				
 				
 				gridHierbas.appendChild(herb_card);
-				}
-			)
-			
-			
-			
-		 }
-        <!-- // Crear las tarjetas de imágenes -->
-        function createImageCards() {
-		crearHierbasCard();
-            const grid = document.getElementById('imagesGrid');
-            
-            imageData.forEach(data => {
-                const card = document.createElement('div');
-                card.className = 'image-card';
-                
-                <!-- // Generar URL de Unsplash con ID único -->
-                const imageUrl = `https://picsum.photos/400/300?random=${data.id}`;
 				
-                card.innerHTML = `
-                    <div class="image-wrapper">
-                        <img 
-                            class="lazy-image" 
-                            data-src="${imageUrl}"
-                            alt="${data.title}"
-							id="${data.id}"
-                            loading="lazy"
-                        >
-                    </div>
-                    <div class="image-info">
-                        <div class="image-title">${data.title}</div>
-                        <span class="image-status status-loading">Pendiente</span>
-                    </div>
-                `;
-                
-                grid.appendChild(card);
-                
-                <!-- // Observar la imagen -->
-                const img = card.querySelector('.lazy-image');
-                OneImageObserver.observe(img);
-            });
+				
+			} );			
             
-            updateStats();
-        }
+			<!--// Observar las imagenes de hierba -->
+               document.querySelectorAll('.hierbaImg').forEach(elem => {
+               hierbaObserver.observe(elem);
+			   });			   
+		 }
+
 
         <!-- // Actualizar estadísticas -->
         function updateStats() {
-            document.getElementById('totalImages').textContent = imageData.length;
-            document.getElementById('loadedImages').textContent = loadedCount;
-            document.getElementById('pendingImages').textContent = imageData.length - loadedCount;
+            <!-- document.getElementById('totalImages').textContent = imageData.length; -->
+            <!-- document.getElementById('loadedImages').textContent = loadedCount; -->
+            <!-- document.getElementById('pendingImages').textContent = imageData.length - loadedCount; -->
             
-            if (loadTimes.length > 0) {
-                const avgTime = Math.round(loadTimes.reduce((a, b) => a + b, 0) / loadTimes.length);
-                document.getElementById('loadTime').textContent = avgTime + 'ms';
-            }
+            <!-- if (loadTimes.length > 0) { -->
+                <!-- const avgTime = Math.round(loadTimes.reduce((a, b) => a + b, 0) / loadTimes.length); -->
+                <!-- document.getElementById('loadTime').textContent = avgTime + 'ms'; -->
+            <!-- } -->
         }
 
         <!-- // Cargar todas las imágenes inmediatamente -->
@@ -2490,18 +2394,6 @@
             });
         }
 
-        <!-- // Reiniciar el demo -->
-        function resetImages() {
-            loadedCount = 0;
-            loadTimes = [];
-            
-            const grid = document.getElementById('imagesGrid');
-            grid.innerHTML = '';
-            
-            createImageCards();
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
 
         <!-- // Scroll al final -->
         function scrollToBottom() {
@@ -2512,7 +2404,9 @@
         }
 
         <!-- // Inicializar -->
-        createImageCards();
+        <!-- createImageCards(); -->
+		
+		crearHierbasCard();
 
         <!-- // Log de técnicas usadas -->
         console.log('%c🚀 Lazy Loading Implementado', 'font-size: 20px; color: #667eea; font-weight: bold;');
