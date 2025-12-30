@@ -448,7 +448,7 @@
         }
 		
 		/*Imagen Hero*/
-		.about_hero_container_container{
+		.about_hero_container{
 			display: flex;
 			justify-content: center;
 		}
@@ -785,7 +785,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
+            height: 2px;
             background: linear-gradient(90deg, var(--accent-purple), var(--accent-turquoise));
             transform: scaleX(0);
             transition: transform 0.4s ease;
@@ -977,6 +977,14 @@
 			box-shadow:1px 1px 3px var(--accent-turquoise);
 			transition:all .3s ease-in-out;
 		}
+		
+		a:focus-visible, button:focus-visible {
+		  outline: 3px dashed red;
+		  outline-offset: 2px; /* Separa el contorno del elemento */
+		}
+		
+		hover{border-color:var(--accent-turquoise);scale:1.2;}
+		
 		.btn_float_back:hover{border-color:var(--accent-turquoise);scale:1.2;}
 		
 		.btn_float_back a { text-decoration: none;}
@@ -1310,13 +1318,12 @@
 </head>
 <body>
     <!-- HEADER -->
-    <header role="banner"  id="header">
+    <header role="banner" id="header" aria-label="Cabecera principal">
         <div class="header-container">
             <a href="#" class="logo" aria-label="Centro Holístico Colibrí">
                 <div class="logo-icon">
-					<img src="imgs/logo.png"/>
+					<img src="imgs/logo.png" alt="logo"/>
 				</div>
-                <span></span>
             </a>
             <div style="display: flex; align-items: center;">
                 <div class="hamburger" id="hamburger" aria-label="Menú" role="button" tabindex="0">
@@ -1328,7 +1335,7 @@
 		
         <nav id="nav" role="navigation" aria-label="Navegación principal">
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#inicio" aria-current="page">Inicio</a></li>
                 <li><a href="#quienesSomos">Quiénes Somos</a></li>
                 <li><a href="#nuestraMision">Nuestra Mision</a></li>
                 <li><a href="#servicios">Nuestros Espacios</a></li>
@@ -1349,14 +1356,14 @@
             <!-- <a href="#about" class="cta-button">Conoce más</a> -->
         </div>
         <div class="scroll-indicator">
-            <img src="imgs/logo.png"alt="imagen-logo" title="imagen-logo" width="100" height="50"/>
+            <img src="imgs/logo.png"alt="imagen-logo" title="imagen-logo" width="100" height="50" aria-hidden="true"/>
         </div>
     </section>
 	
    
         <!-- ABOUT SECTION -->
         <section class="about">
-			 <div class="about_hero_container_container" id="about_hero_container"> 
+			 <div class="about_hero_container" id="about_hero_container"> 
             </div> 
             
             <div class="about-content">
@@ -1393,7 +1400,7 @@
             </div>
         </section>
 			
-        <section id="nuestraMision">
+        <section id="nuestraMision" aria-label="nuestraMision">
 			<div class="about-content" >
 				<article class="about_text">
 					<h2 class="section-title">Nuestra Misión</h2>
@@ -1429,7 +1436,7 @@
 			</div>			
         </section>
 		
-        <section id="servicios">
+        <section id="servicios" aria-label="servicios">
             <h2 class="section-title">Nuestros Espacios</h2>
             <div class="services-grid" id="servicesGrid">
                 <!-- Services will be loaded dynamically -->
@@ -1439,16 +1446,16 @@
    
 	
 	 <!-- Grid de Hierbas -->
-	<div class="container_hierbas_terapeuticas" id="hierbas_terapeuticas">
+	<div class="container_hierbas_terapeuticas" id="hierbas_terapeuticas" role="regionHierbas" aria-labelledby="hierbas_terapeuticas">
 		<h2>🌿 Hierbas Medicinales & Terapias Alternativas 🌿</h2>
 		<div class="containerHierbas" id="containerHierbas"></div>
 	</div>
 	<!-- Modal -->
-			<div id="modal_hierbas" class="modal">
-				<span class="close-modal">&times;</span>
+	<div id="modal_hierbas" class="modal" role="dialog" aria-label="modalHierbas" aria-modal="true" aria-labelledby="modal-title" aria-describedby="decripcion-hirbas">
+				<span class="close-modal" aria-label="cerrar modal">&times;</span>
 				<div class="modal-content">
 					<h2 class="modal-title" id="modalTitle"></h2>
-					<img class="modal-image" id="modalImage1" alt="Vista 1">
+					<img class="modal-image" id="modalImage1" alt="Vista 1" >
 					<img class="modal-image" id="modalImage2" alt="Vista 2">
 				</div>
 	</div>	
@@ -1478,27 +1485,27 @@
     </aside>
 
     <!-- FOOTER -->
-    <footer id="contacto" role="contentinfo">
+    <footer id="contacto" role="contentinfo" aria-label="footer">
         <div class="footer-container">
             <div class="footer-section foot_data">
-				<div class="contact_data">				
+				<address class="contact_data">				
 					<h3>Contacto</h3>
 					<div class="contact-info">
 						<a href="https://wa.me/59898679029" class="contact-item" target="_blank" rel="noopener" aria-label="WhatsApp">
-							<div class="contact-icon"><img src="imgs/icons8-whatsapp-64.png"/></div>
+							<div class="contact-icon"><img src="imgs/icons8-whatsapp-64.png" aria-hidden="true"/></div>
 							<span>Whats App</span>						
 						</a>
 						<a href="https://www.instagram.com/veronicasosa.holistica?utm_source=qr&igsh=MTBnNXJuczIxOTVucg%3D%3D" class="contact-item" target="_blank" rel="noopener" aria-label="Instagram">
-							<div class="contact-icon"><img src="imgs/insta1.png"/></div>
+							<div class="contact-icon"><img src="imgs/insta1.png" aria-hidden="true"/></div>
 							<span>@colibriholistico</span>						
 						</a>					
 						<a href="https://www.facebook.com/verito.sosa.9026" class="contact-item" target="_blank" rel="noopener" aria-label="Facebook">
-							<div class="contact-icon"><img src="imgs/facebook3.png"/></div>
+							<div class="contact-icon"><img src="imgs/facebook3.png" aria-hidden="true" /></div>
 							<span>Vero Sosa</span>
 						</a>
 							
 					</div>
-				</div>
+				</address>
 				
 				<div class="container_btnToggle">
 					<button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema"></button>	
@@ -1510,7 +1517,7 @@
 					<h3>Ubicación</h3>
 					<div class="contact-info info_map">
 						<div class="contact-item">
-							<div class="contact-icon" title="abrir mapa" onclick="openMap()"> <span><i>📍 Clicá aquí y agranda el mapa </i></span> 
+							<div class="contact-icon" title="abrir mapa" onclick="openMap()" aria-label="abrir-mapa"> <span><i>📍 Clicá aquí y agranda el mapa </i></span> 
 							</div>
 						</div>
 						<div class="map_content">
@@ -2011,6 +2018,7 @@
                         data-src="${service.image}" 
                         alt="${service.title}"
                         loading="lazy"
+						aria-label= ${service.title}
                     />
                     <h3>${service.title}</h3>
                     <p>${service.description}</p>
@@ -2341,6 +2349,7 @@
 				herb_img.id = `index`;
 				herb_img.setAttribute('data-user-name', herb.name);
 				herb_img.loading='lazy' ;
+				herb_img.setAttribute('aria-label', `${herb.name}`);
 				
 				
 				const herb_info =  document.createElement('div');
